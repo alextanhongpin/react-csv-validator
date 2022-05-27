@@ -73,7 +73,6 @@ function App() {
         show={result.length}
         header={CourseCsvValidator.headerFromRow(result?.[0])}
         body={result}
-        limit={7}
       />
 
       <Table

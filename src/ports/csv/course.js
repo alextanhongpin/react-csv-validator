@@ -1,5 +1,5 @@
-import Joi from "joi";
 import CsvValidator from "./core";
+import { validateCourse } from "models";
 
 export class CourseCsvValidator extends CsvValidator {
   static HEADER_BY_FIELD = {
@@ -12,23 +12,7 @@ export class CourseCsvValidator extends CsvValidator {
     isCourseRetired: "IsCourseRetired",
   };
 
-  static parse(row) {
-    return {
-      ...row,
-      isCourseRetired: row.isCourseRetired === "yes",
-    };
+  static validate(row) {
+    return validateCourse(row);
   }
-
-  static SCHEMA = Joi.compile(
-    Joi.object({
-      courseId: Joi.string().required(),
-      courseTitle: Joi.string().required(),
-      durationInSeconds: Joi.number().integer().required().min(0),
-      releaseDate: Joi.date().required(),
-      //description: Joi.string().optional(),
-      description: Joi.string().allow("").optional(),
-      assessmentStatus: Joi.string(),
-      isCourseRetired: Joi.boolean().required(),
-    })
-  );
 }

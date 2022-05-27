@@ -1,4 +1,4 @@
-import Joi from "joi";
+import { ValidationError } from "yup";
 
 export class CsvRowError extends Error {
   constructor(row, data, options) {
@@ -16,9 +16,9 @@ export class CsvRowError extends Error {
       );
     }
 
-    if (Joi.isError(error)) {
-      const num = error.details.length;
-      const msg = error.details.map((err) => err.message).join(", ");
+    if (error instanceof ValidationError) {
+      const num = error.errors.length;
+      const msg = error.errors.join(", ");
       const count = num === 1 ? "1 error" : `${num} errors`;
       return `row ${this.row} invalid, found ${count} - ${msg}`;
     }
