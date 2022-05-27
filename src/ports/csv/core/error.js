@@ -1,10 +1,11 @@
 import Joi from "joi";
 
 export class CsvRowError extends Error {
-  constructor(row, options) {
+  constructor(row, data, options) {
     super("", options);
     this.name = this.constructor.name;
     this.row = row;
+    this.data = data;
   }
 
   toString() {

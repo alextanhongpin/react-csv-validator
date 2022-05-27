@@ -1,0 +1,16 @@
+.table {
+  border: 1px solid #ddd;
+  /* Required to style border */
+  border-collapse: collapse;
+
+  display: block;
+  overflow-x: auto;
+}
+
+.thead,
+.tbody,
+.td,
+.th {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+}
