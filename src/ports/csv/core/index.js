@@ -1,6 +1,7 @@
 import Papa from "papaparse";
 import { CsvRowError } from "./error";
 import { AggregateError } from "ports/error";
+export { useCsv } from "./hook";
 
 export { CsvRowError };
 
